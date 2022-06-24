@@ -6,8 +6,7 @@ name = "pypi"
 [packages]
 numpy = "*"
 scipy = "*"
-sklearn = "*"
-jupyter = "*"
 
 [dev-packages]
 pytest = "*"
+flake8 = "*"

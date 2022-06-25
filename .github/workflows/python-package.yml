@@ -20,7 +20,8 @@
 
      steps:
      - uses: actions/checkout@v3
-       repository: effCTR
+       with:
+         repository: effCTR
      - name: Set up Python ${{ matrix.python-version }}
        uses: actions/setup-python@v3
        with:

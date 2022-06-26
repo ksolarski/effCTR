@@ -1,23 +1,38 @@
 """Class for logistic SGD."""
 import scipy.sparse
 import numpy as np
-
-
-def decaying_learning_rate(t):
-    """Decaying learning rate."""
-    return 1 / (np.sqrt(t + 1) * 10000)
+import matplotlib.pyplot as plt
 
 
 class Logistic_SGD:
     """Class for logistic SGD."""
 
-    def __init__(self, chunksize=10000,
-                 learning_rate=decaying_learning_rate,
+    def __init__(self,
+                 chunksize=10000,
+                 learning_rate=0.0001,
                  max_epochs=10,
                  randomized=False,
                  early_stopping=False,
                  n_iter_no_change=50):
-        """Initialize Logistic_SGD object."""
+        """Initialize Logistic_SGD object.
+
+        Parameters
+        ----------
+        chunksize : int, default 10000
+            Number of observations used in one iteration of the algorithm.
+        learning_rate : float, default 0.0001
+            Learning rate.
+        max_epochs : int, default 10
+            Maximum number of iterations through whole dataset.
+        randomized : bool, default False
+            Whether to iterate through consecutive batches in dataset
+            or draw a batch randomnly.
+        early_stopping : bool, default False
+            Whether to stop algorithm if there is no improvement
+            in the loss function.
+        n_iter_no_change : int, default 50
+            Number of iterations used in early stopping criterion.
+        """
         self.chunksize = chunksize
         self.learning_rate = learning_rate
         self.max_epochs = max_epochs
@@ -46,39 +61,63 @@ class Logistic_SGD:
         w = w - score
         return p, w
 
-    def _sgd_iterative(self, X, y):
+    def _process_return_results(self, w, weights_matrix, log_likelihood):
+        return w, np.array(weights_matrix), np.array(log_likelihood)
 
+    def _sgd_iterative(self, X, y):
         # initialize
         chunksize = self.chunksize
+        learning_rate = self.learning_rate
         total_chunks = int(X.shape[0] / chunksize)
         w = np.zeros(X.shape[1]).reshape(-1, 1)
         weights_matrix = []
         log_likelihood = []
+
+        # iterate through epochs and chunks
         for epoch in range(self.max_epochs):
             for chunk_no in range(total_chunks):
+
+                # randomize chunk
                 if self.randomized:
                     chunk_no = np.random.randint(0, total_chunks)
+
+                # slice X and y
                 X_chunk = X[chunk_no * chunksize:(chunk_no + 1) * chunksize, :]
                 y_chunk = y[chunk_no * chunksize:(chunk_no + 1) * chunksize, :]
-                learning_rate = self.learning_rate(chunk_no)
+
+                # update weights
                 p, w = self._update_weights(y_chunk, X_chunk, w, learning_rate)
 
-                # getting log_likelihood
+                # get log_likelihood
                 log_likelihood.append(self._loss(p, y_chunk))
 
                 # implement early stopping
                 if self.early_stopping is True:
                     min_stop = min(len(log_likelihood), self.n_iter_no_chang)
                     if log_likelihood[-1] > (log_likelihood[-min_stop]):
-                        return w, weights_matrix, log_likelihood
+                        return self._process_return_results(
+                            w, weights_matrix, log_likelihood)
 
-                # updating matrix of weights
+                # update matrix of weights
                 weights_matrix.append(w.reshape(-1))
 
-        return w, weights_matrix, log_likelihood
+        return self._process_return_results(w, weights_matrix, log_likelihood)
 
     def fit(self, X, y):
-        """Fit the model."""
+        """Fit the model.
+
+        Parameters
+        ----------
+        X : sparse matrix with shape (n_samples, n_features)
+            Training data.
+        y : sparse matrix with shape (n_samples, 1)
+            Target values.
+
+        Returns
+        -------
+        self : object
+            Returns an instance of self.
+        """
         w, weights_matrix, log_likelihood = self._sgd_iterative(X, y)
         self.w = w
         self.weights_matrix = weights_matrix
@@ -86,5 +125,34 @@ class Logistic_SGD:
         return self
 
     def predict(self, X):
-        """Predict probabilities."""
+        """Predict probabilities.
+
+        Parameters
+        ----------
+        X : sparse matrix with shape (n_samples, n_features)
+            Data used to obtain predictions.
+
+        Returns
+        -------
+        np.array of size (n_samples,) with predictions.
+        """
         return self._logit(self.w, X).reshape(-1, 1)
+
+    def plot_weights(self, indices_weights, weight_names=None):
+        """Plot the updates of weights over iterations.
+
+        Parameters
+        ----------
+        indices_weights : list
+            Data used to obtain predictions.
+        weight_names : list, default None
+            List of feature names to be displayed.
+            If None, then ``indices_weights`` are displayed.
+        """
+        if weight_names is None:
+            weight_names = indices_weights
+        plt.plot(self.weights_matrix[:, indices_weights])
+        plt.legend(weight_names)
+        plt.ylabel('weight')
+        plt.xlabel('iteration')
+        plt.title('Weights of selected features after each iteration')

@@ -2,7 +2,7 @@
 import pytest
 import scipy.sparse
 import numpy as np
-from effCTR.models.SGD import Logistic_SGD
+from effCTR.models.Logistic_SGD import Logistic_SGD
 
 
 @pytest.fixture(scope='function')

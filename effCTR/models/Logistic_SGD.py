@@ -2,6 +2,7 @@
 import scipy.sparse
 import numpy as np
 import matplotlib.pyplot as plt
+from effCTR.utils.loss_functions import log_loss
 
 
 class Logistic_SGD:
@@ -39,12 +40,6 @@ class Logistic_SGD:
         self.randomized = randomized
         self.early_stopping = early_stopping
         self.n_iter_no_chang = n_iter_no_change
-
-    def _loss(self, p, y):
-        y = y.A
-        y = y.reshape(-1)
-        p = p.reshape(-1)
-        return (-y * np.log(p) - (1 - y) * np.log(1 - p)).mean()
 
     def _logit(self, w, X):
         w = scipy.sparse.csr_matrix(w).reshape(-1, 1)
@@ -89,7 +84,7 @@ class Logistic_SGD:
                 p, w = self._update_weights(y_chunk, X_chunk, w, learning_rate)
 
                 # get log_likelihood
-                log_likelihood.append(self._loss(p, y_chunk))
+                log_likelihood.append(log_loss(p, y_chunk))
 
                 # implement early stopping
                 if self.early_stopping is True:

@@ -131,7 +131,7 @@ class Logistic_SGD:
         -------
         np.array of size (n_samples,) with predictions.
         """
-        return self._logit(self.w, X).reshape(-1, 1)
+        return self._logit(self.w, X).reshape(-1)
 
     def plot_weights(self, indices_weights, weight_names=None):
         """Plot the updates of weights over iterations.

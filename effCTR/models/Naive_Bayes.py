@@ -6,7 +6,16 @@ class Naive_Bayes:
     """Class for Naive Bayes."""
 
     def __init__(self, replace_by_epsilon=True, epsilon=1e-5):
-        """Initialize Naive_Bayes object."""
+        """Initialize Naive_Bayes object.
+
+        Parameters
+        ----------
+        replace_by_epsilon : bool, default True
+            Whether to replace 0 probabilities by small epsilon. If ``False``,
+            smalles probabilities from datasets are used instead of epsilon.
+        epsilon : float, default 1e-5
+            Epsilon used when argument ``replace_by_epsilon`` is ``True``.
+        """
         self.replace_by_epsilon = replace_by_epsilon
         self.epsilon = epsilon
 

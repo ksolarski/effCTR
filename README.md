@@ -27,7 +27,10 @@ where $P\left(X_{i}=x_{i} \mid Y=1\right)$ denotes probabilty of feature $X_i$ t
 
 $$
 \begin{equation}
-P(Y=1) \prod_{i} P\left(X_{i}=x_{i} \mid Y=1\right) = \exp [ {\log \{{P(Y=1) \prod_{i} P\left(X_{i}=x_{i} \mid Y=1\right)} ] }} = \exp [ {\log{P(Y=1)} + \sum_{i} \log{P\left(X_{i}=x_{i} \mid Y=1\right)}} ]
+\begin{aligned}
+P(Y=1) \prod_{i} P\left(X_{i}=x_{i} \mid Y=1\right) = \exp [ {\log \{{P(Y=1) \prod_{i} P\left(X_{i}=x_{i} \mid Y=1\right)} ] }} = \\
+\exp [ {\log{P(Y=1)} + \sum_{i} \log{P\left(X_{i}=x_{i} \mid Y=1\right)}} ]
+\end{aligned}
 \end{equation}
 $$
 

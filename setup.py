@@ -19,5 +19,5 @@ _INSTALL_REQUIREMENTS = _parse_requirements(os.path.join(
 
 setup(install_requires=_INSTALL_REQUIREMENTS,
       name="effCTR",
-      version="0.0.1",
+      version="0.1.0",
       packages=find_packages())

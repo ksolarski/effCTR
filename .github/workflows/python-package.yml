@@ -38,7 +38,7 @@
        run: |
          python -m pytest -vvv
      - name: add test coverage
-     - uses: codecov/codecov-action@v3
+       uses: codecov/codecov-action@v3
        with:
          flags: unittests # optional
          name: codecov-umbrella # optional

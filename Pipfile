@@ -11,3 +11,4 @@ matplotlib = "*"
 [dev-packages]
 pytest = "*"
 flake8 = "*"
+pytest-cov = "*"

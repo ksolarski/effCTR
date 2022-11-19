@@ -38,7 +38,6 @@
        run: |
          python -m pytest -vvv
      - name: add test coverage
-     - uses: actions/checkout@master
      - uses: codecov/codecov-action@v3
        with:
          flags: unittests # optional

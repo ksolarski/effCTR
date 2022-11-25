@@ -5,6 +5,7 @@
 #    pipenv lock --requirements
 #
 
+-i https://pypi.python.org/simple
 contourpy==1.0.6; python_version >= '3.7'
 cycler==0.11.0; python_version >= '3.6'
 fonttools==4.38.0; python_version >= '3.7'

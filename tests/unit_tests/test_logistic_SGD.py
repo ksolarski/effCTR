@@ -23,9 +23,20 @@ def X_sparse():
 
 
 def test_simple_logistic_SGD(X_sparse, y_sparse):
-    """Test logistic SGD on a very simple case."""
-    logistic_SGD = Logistic_SGD(chunksize=2)
-    mod = logistic_SGD.fit(X_sparse, y_sparse)
+    """Test logistic SGD on simple cases."""
+
+    # Basic test
+    LSGD = Logistic_SGD()
+    mod = LSGD.fit(X_sparse, y_sparse)
     pred = mod.predict(X_sparse)
     assert pred.shape == (10,)
     assert all(pred <= 1) and all(pred >= 0)
+    assert mod.weights_matrix.shape == (10, 2)
+
+    # Test with integer chunksize
+    LSGD = Logistic_SGD(chunksize=2)
+    mod = LSGD.fit(X_sparse, y_sparse)
+    pred = mod.predict(X_sparse)
+    assert pred.shape == (10,)
+    assert all(pred <= 1) and all(pred >= 0)
+    assert mod.weights_matrix.shape == (50, 2)

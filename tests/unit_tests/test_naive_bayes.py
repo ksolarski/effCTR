@@ -5,7 +5,7 @@ import numpy as np
 from effCTR.models.Naive_Bayes import Naive_Bayes
 
 
-@pytest.fixture(scope='function')
+@pytest.fixture(scope="function")
 def y_sparse():
     """Create a sample dataset."""
     y = np.array([0, 0, 1, 0, 0, 0, 0, 0, 1, 0]).reshape(-1, 1)
@@ -13,11 +13,12 @@ def y_sparse():
     return y
 
 
-@pytest.fixture(scope='function')
+@pytest.fixture(scope="function")
 def X_sparse():
     """Create a sample dataset."""
-    X = np.array([0, 1, 0, 1, 1, 0, 1, 1, 1, 0,
-                  1, 1, 1, 0, 1, 0, 1, 0, 0, 1]).reshape(10, 2)
+    X = np.array([0, 1, 0, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 0, 1, 0, 0, 1]).reshape(
+        10, 2
+    )
     X = scipy.sparse.csr_matrix(X)
     return X
 

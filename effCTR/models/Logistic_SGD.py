@@ -8,13 +8,15 @@ from effCTR.utils.loss_functions import log_loss
 class Logistic_SGD:
     """Class for logistic SGD."""
 
-    def __init__(self,
-                 chunksize=10000,
-                 learning_rate=0.0001,
-                 max_epochs=10,
-                 randomized=False,
-                 early_stopping=False,
-                 n_iter_no_change=50):
+    def __init__(
+        self,
+        chunksize=10000,
+        learning_rate=0.0001,
+        max_epochs=10,
+        randomized=False,
+        early_stopping=False,
+        n_iter_no_change=50,
+    ):
         """Initialize Logistic_SGD object.
 
         Parameters
@@ -71,14 +73,13 @@ class Logistic_SGD:
         # iterate through epochs and chunks
         for epoch in range(self.max_epochs):
             for chunk_no in range(total_chunks):
-
                 # randomize chunk
                 if self.randomized:
                     chunk_no = np.random.randint(0, total_chunks)
 
                 # slice X and y
-                X_chunk = X[chunk_no * chunksize:(chunk_no + 1) * chunksize, :]
-                y_chunk = y[chunk_no * chunksize:(chunk_no + 1) * chunksize, :]
+                X_chunk = X[chunk_no * chunksize : (chunk_no + 1) * chunksize, :]
+                y_chunk = y[chunk_no * chunksize : (chunk_no + 1) * chunksize, :]
 
                 # update weights
                 p, w = self._update_weights(y_chunk, X_chunk, w, learning_rate)
@@ -91,7 +92,8 @@ class Logistic_SGD:
                     min_stop = min(len(log_likelihood), self.n_iter_no_chang)
                     if log_likelihood[-1] > (log_likelihood[-min_stop]):
                         return self._process_return_results(
-                            w, weights_matrix, log_likelihood)
+                            w, weights_matrix, log_likelihood
+                        )
 
                 # update matrix of weights
                 weights_matrix.append(w.reshape(-1))
@@ -148,6 +150,6 @@ class Logistic_SGD:
             weight_names = indices_weights
         plt.plot(self.weights_matrix[:, indices_weights])
         plt.legend(weight_names)
-        plt.ylabel('weight')
-        plt.xlabel('iteration')
-        plt.title('Weights of selected features after each iteration')
+        plt.ylabel("weight")
+        plt.xlabel("iteration")
+        plt.title("Weights of selected features after each iteration")

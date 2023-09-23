@@ -21,7 +21,7 @@ _INSTALL_REQUIREMENTS = _parse_requirements(
 setup(
     install_requires=_INSTALL_REQUIREMENTS,
     name="effCTR",
-    version="0.1.1",
+    version="0.1.2",
     url="https://github.com/ksolarski/effCTR",
     author="Kacper Solarski",
     author_email="pchla10@gmail.com",

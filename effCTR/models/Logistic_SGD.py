@@ -87,7 +87,7 @@ class Logistic_SGD:
                 log_likelihood.append(log_loss(p, y_chunk))
 
                 # implement early stopping
-                if self.early_stopping is True:
+                if self.early_stopping:
                     min_stop = min(len(log_likelihood), self.n_iter_no_chang)
                     if log_likelihood[-1] > (log_likelihood[-min_stop]):
                         return self._process_return_results(

@@ -1,3 +1,15 @@
+<!--- BADGES: START --->
+![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/ksolarski/effCTR)
+[![PyPI](https://img.shields.io/pypi/v/effCTR)][#pypi-package]
+[![Build Status](https://github.com/ksolarski/effCTR/workflows/build/badge.svg)](https://github.com/ksolarski/effCTR/actions)
+[![PyPI - Python Version](https://img.shields.io/pypi/pyversions/effCTR)][#pypi-package]
+[![Downloads](https://pepy.tech/badge/effctr)](https://pepy.tech/project/effctr)
+[![PyPI - License](https://img.shields.io/pypi/l/effCTR?logo=pypi&style=flat&color=green)][#github-license]
+
+[#github-license]: https://github.com/ksolarski/effCTR/blob/main/LICENSE
+[#pypi-package]: https://pypi.org/project/ksolarski/effCTR/
+<!--- BADGES: END --->
+
 # effCTR
 
 Efficient Click-Through Rate (effCTR) implements Logistic Regression with Stochastic Gradient Descent (SGD) and Naive Bayes in Python, and it utilises sparse matrices from [scipy.sparse](https://docs.scipy.org/doc/scipy/reference/sparse.html) to achive up to 60x speedup compared to implementations from [scikit-learn](https://scikit-learn.org/stable/).

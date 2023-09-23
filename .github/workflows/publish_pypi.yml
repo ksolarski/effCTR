@@ -10,7 +10,6 @@ jobs:
         uses: actions/checkout@v4
         with:
           repository: kapa112/effCTR
-          ref: "heads/main"
       - run: python -m pip install --upgrade build && python -m build -s
       - name: Publish package
         uses: pypa/gh-action-pypi-publish@release/v1

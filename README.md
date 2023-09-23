@@ -8,7 +8,7 @@
 [![PyPI - Python Version](https://img.shields.io/pypi/pyversions/effCTR)][#pypi-package]
 [![PyPI - License](https://img.shields.io/pypi/l/effCTR?logo=pypi&style=flat&color=green)][#github-license]
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)]: https://github.com/ksolarski/effCTR/blob/main/LICENSE
+[#github-license]: https://github.com/ksolarski/effCTR/blob/master/LICENSE
 [#pypi-package]: https://pypi.org/project/ksolarski/effCTR/
 <!--- BADGES: END --->
 

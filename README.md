@@ -2,13 +2,13 @@
 ![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/ksolarski/effCTR)
 [![PyPI](https://img.shields.io/pypi/v/effCTR)][#pypi-package]
 [![Downloads](https://pepy.tech/badge/effctr)](https://pepy.tech/project/effctr)
-[![Build Status](https://github.com/ksolarski/effCTR/workflows/build/badge.svg)](https://github.com/ksolarski/effCTR/actions)
+[![Build Status](https://github.com/ksolarski/effCTR/actions/workflows/build.yml/badge.svg)](https://github.com/ksolarski/effCTR/actions)
 [![codecov](https://codecov.io/gh/ksolarski/effCTR/graph/badge.svg?token=DNYKBCLNKU)](https://codecov.io/gh/ksolarski/effCTR)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 [![PyPI - Python Version](https://img.shields.io/pypi/pyversions/effCTR)][#pypi-package]
 [![PyPI - License](https://img.shields.io/pypi/l/effCTR?logo=pypi&style=flat&color=green)][#github-license]
 
-[#github-license]: https://github.com/ksolarski/effCTR/blob/main/LICENSE
+[#github-license]: https://github.com/ksolarski/effCTR/blob/master/LICENSE
 [#pypi-package]: https://pypi.org/project/ksolarski/effCTR/
 <!--- BADGES: END --->
 

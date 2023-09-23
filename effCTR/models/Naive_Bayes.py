@@ -19,8 +19,7 @@ class Naive_Bayes:
         self.replace_by_epsilon = replace_by_epsilon
         self.epsilon = epsilon
 
-    def _replace_0_p_epsilon(self, p_given_click,
-                             p_given_no_click, epsilon):
+    def _replace_0_p_epsilon(self, p_given_click, p_given_no_click, epsilon):
         "Replace 0 probabilities with epsilon."
         p_given_click[p_given_click == 0] = epsilon
         p_given_no_click[p_given_no_click == 0] = epsilon
@@ -29,12 +28,10 @@ class Naive_Bayes:
 
     def _replace_0_p_sample(self, p_given_click, p_given_no_click):
         "Replace 0 probabilities with smalles observed probability."
-        min_p_given_click = np.min(
-            p_given_click[p_given_click > 0])
+        min_p_given_click = np.min(p_given_click[p_given_click > 0])
         p_given_click[p_given_click == 0] = min_p_given_click
 
-        min_p_given__no_click = np.min(
-            p_given_no_click[p_given_no_click > 0])
+        min_p_given__no_click = np.min(p_given_no_click[p_given_no_click > 0])
         p_given_no_click[p_given_no_click == 0] = min_p_given__no_click
 
         return p_given_click, p_given_no_click
@@ -63,8 +60,7 @@ class Naive_Bayes:
         click_indices = y.A.reshape(-1)
         no_click_indices = 1 - click_indices
         list_of_indices_click = np.array((np.where(click_indices))).tolist()[0]
-        list_of_indices_no_click = np.array(
-            (np.where(no_click_indices))).tolist()[0]
+        list_of_indices_no_click = np.array((np.where(no_click_indices))).tolist()[0]
 
         # getting matrices of features corresponding
         # to observations with click and no click
@@ -73,20 +69,20 @@ class Naive_Bayes:
 
         # getting probabilities for each set
         # of features given click and given no click
-        p_given_click = np.array(
-            m_clicks.mean(axis=0).tolist()[0])
-        p_given_no_click = np.array(
-            m_no_clicks.mean(axis=0).tolist()[0])
+        p_given_click = np.array(m_clicks.mean(axis=0).tolist()[0])
+        p_given_no_click = np.array(m_no_clicks.mean(axis=0).tolist()[0])
 
         # replacing zero probabilities
         if self.replace_by_epsilon is True:
             if epsilon is None:
                 epsilon = self.epsilon
             p_given_click, p_given_no_click = self._replace_0_p_epsilon(
-                p_given_click, p_given_no_click, epsilon)
+                p_given_click, p_given_no_click, epsilon
+            )
         else:
             p_given_click, p_given_no_click = self._replace_0_p_sample(
-                p_given_click, p_given_no_click)
+                p_given_click, p_given_no_click
+            )
 
         self.p_given_click = p_given_click
         self.p_given_no_click = p_given_no_click
@@ -110,10 +106,8 @@ class Naive_Bayes:
         p_logs_given_no_click = np.log(self.p_given_no_click)
 
         # summing probabilities - using dot product
-        sum_p_logs_given_click = X.dot(
-            p_logs_given_click)
-        sum_p_logs_given_no_click = X.dot(
-            p_logs_given_no_click)
+        sum_p_logs_given_click = X.dot(p_logs_given_click)
+        sum_p_logs_given_no_click = X.dot(p_logs_given_no_click)
 
         # getting logs of probabilities of click and no click
         p_click = self.p_click

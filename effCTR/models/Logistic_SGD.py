@@ -21,8 +21,9 @@ class Logistic_SGD:
 
         Parameters
         ----------
-        chunksize : int, default 10000
+        chunksize : int, default None
             Number of observations used in one iteration of the algorithm.
+            If None, then whole dataset is used in each iteration.
         learning_rate : float, default 0.0001
             Learning rate.
         max_epochs : int, default 10
@@ -44,7 +45,7 @@ class Logistic_SGD:
         self.n_iter_no_chang = n_iter_no_change
 
     def _logit(self, w, X):
-        w = scipy.sparse.csr_matrix(w).reshape(-1, 1)
+        w = scipy.sparse.csr_matrix(w)
         p = 1 / (1 + np.exp(-((X.dot(w)).A)))
         return p
 
@@ -53,7 +54,7 @@ class Logistic_SGD:
         return np.array(score)
 
     def _update_weights(self, y, X, w, learning_rate):
-        p = self._logit(w, X).reshape(-1, 1)
+        p = self._logit(w, X)
         score = self._grad(p, y, X, learning_rate)
         w = w - score
         return p, w
@@ -65,10 +66,17 @@ class Logistic_SGD:
         # initialize
         chunksize = self.chunksize
         learning_rate = self.learning_rate
-        total_chunks = int(X.shape[0] / chunksize)
-        w = np.zeros(X.shape[1]).reshape(-1, 1)
+        w = np.zeros((X.shape[1], 1))
         weights_matrix = []
         log_likelihood = []
+
+        # get chunksize
+        chunksize = self.chunksize
+        if isinstance(chunksize, int):
+            total_chunks = int(X.shape[0] / chunksize)
+        else:
+            chunksize = X.shape[0]
+            total_chunks = 1
 
         # iterate through epochs and chunks
         for epoch in range(self.max_epochs):

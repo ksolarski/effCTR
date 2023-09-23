@@ -22,5 +22,8 @@ setup(
     install_requires=_INSTALL_REQUIREMENTS,
     name="effCTR",
     version="0.1.0",
+    url='https://github.com/ksolarski/effCTR',
+    author='Kacper Solarski',
+    author_email='pchla10@gmail.com',
     packages=find_packages(),
 )

@@ -21,11 +21,18 @@ _INSTALL_REQUIREMENTS = _parse_requirements(
 setup(
     install_requires=_INSTALL_REQUIREMENTS,
     name="effCTR",
-    version="0.1.0",
+    version="0.1.1",
     url="https://github.com/ksolarski/effCTR",
     author="Kacper Solarski",
     author_email="pchla10@gmail.com",
     packages=find_packages(),
     python_requires=">=3.9",
     license="MIT",
+    classifiers=[
+        "Development Status :: 3 - Alpha",
+        "License :: OSI Approved :: MIT License",
+        "Programming Language :: Python :: 3.9",
+        "Programming Language :: Python :: 3.10",
+        "Programming Language :: Python :: 3.11",
+    ],
 )

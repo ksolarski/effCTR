@@ -10,7 +10,7 @@ class Logistic_SGD:
 
     def __init__(
         self,
-        chunksize=10000,
+        chunksize=None,
         learning_rate=0.0001,
         max_epochs=10,
         randomized=False,

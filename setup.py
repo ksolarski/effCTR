@@ -27,4 +27,5 @@ setup(
     author_email="pchla10@gmail.com",
     packages=find_packages(),
     python_requires=">=3.9",
+    license="MIT",
 )

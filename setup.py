@@ -5,7 +5,6 @@ _CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
 
 
 def _parse_requirements(path):
-
     with open(os.path.join(_CURRENT_DIR, path)) as f:
         return [
             line.rstrip()

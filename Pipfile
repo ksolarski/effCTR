@@ -10,4 +10,5 @@ matplotlib = "*"
 
 [dev-packages]
 pytest = "*"
+pytest-cov = "*"
 ruff = "*"

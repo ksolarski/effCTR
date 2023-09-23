@@ -8,8 +8,6 @@
      branches: [ "main" ]
    pull_request:
      branches: [ "main" ]
-   schedule:
-   - cron: "0 0 * * *"
 
  jobs:
    build:
@@ -21,7 +19,7 @@
          python-version: ["3.8", "3.9", "3.10", "3.11"]
 
      steps:
-     - uses: actions/checkout@v3
+     - uses: actions/checkout@v4
        with:
          repository: kapa112/effCTR
      - name: Set up Python ${{ matrix.python-version }}

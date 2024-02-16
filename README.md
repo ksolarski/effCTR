@@ -1,6 +1,7 @@
 <!--- BADGES: START --->
 ![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/ksolarski/effCTR)
 [![PyPI](https://img.shields.io/pypi/v/effCTR)][#pypi-package]
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/d8576bcc9a43423883beea2c5895bac6)](https://app.codacy.com/gh/ksolarski/effCTR?utm_source=github.com&utm_medium=referral&utm_content=ksolarski/effCTR&utm_campaign=Badge_Grade)
 [![Downloads](https://pepy.tech/badge/effctr)](https://pepy.tech/project/effctr)
 [![Build Status](https://github.com/ksolarski/effCTR/actions/workflows/build.yml/badge.svg)](https://github.com/ksolarski/effCTR/actions)
 [![codecov](https://codecov.io/gh/ksolarski/effCTR/graph/badge.svg?token=DNYKBCLNKU)](https://codecov.io/gh/ksolarski/effCTR)

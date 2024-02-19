@@ -4,6 +4,7 @@
 [![Downloads](https://pepy.tech/badge/effctr)](https://pepy.tech/project/effctr)
 [![Build Status](https://github.com/ksolarski/effCTR/actions/workflows/build.yml/badge.svg)](https://github.com/ksolarski/effCTR/actions)
 [![codecov](https://codecov.io/gh/ksolarski/effCTR/graph/badge.svg?token=DNYKBCLNKU)](https://codecov.io/gh/ksolarski/effCTR)
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/d6adb00e9ac44e999024e593b76dc88e)](https://app.codacy.com/gh/ksolarski/effCTR/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 [![PyPI - Python Version](https://img.shields.io/pypi/pyversions/effCTR)][#pypi-package]
 [![PyPI - License](https://img.shields.io/pypi/l/effCTR?logo=pypi&style=flat&color=green)][#github-license]

@@ -19,6 +19,7 @@ def X_sparse():
     X = np.array([0, 1, 0, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 0, 1, 0, 0, 1]).reshape(
         10, 2
     )
+
     X = scipy.sparse.csr_matrix(X)
     return X
 

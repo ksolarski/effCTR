@@ -9,7 +9,7 @@
 # requirements. To emit only development requirements, pass "--dev-only".
 
 -i https://pypi.python.org/simple
-contourpy==1.1.1; python_version >= '3.8'
+contourpy==1.2.0; python_version >= '3.8'
 coverage[toml]==7.4.1; python_version >= '3.8'
 cycler==0.12.1; python_version >= '3.6'
 fonttools==4.47.2; python_version >= '3.8'
